@@ -1,0 +1,44 @@
+/**
+ * Division Driver Class.
+ *
+ * @author Alyson Futral
+ * @version 11/23/2023
+ */
+
+import javax.swing.JOptionPane;
+
+/**
+ * DivisionDriver class.
+ *
+ */
+public class DivisionDriver {
+
+    /**
+     * Main Method.
+     * @param args not used.
+     *
+     */
+    public static void main(String[] args) {         
+        String numeratorInput = JOptionPane.showInputDialog("Enter the numerator:");
+        String denominatorInput = JOptionPane.showInputDialog("Enter the denominator:");
+       
+        try {    
+            int numerator = Integer.parseInt(numeratorInput);
+            int denominator = Integer.parseInt(denominatorInput);
+            String result = "Integer division: \n"
+                          + Division.intDivide(numerator, denominator)
+                          + "\n\nFloating point division: \n"
+                          + Division.decimalDivide(numerator, denominator);
+                      
+            JOptionPane.showMessageDialog(null, result,
+                                        "Result", JOptionPane.PLAIN_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, 
+                         "Invalid input: enter numerical integer values only.",
+                         "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e, "Error",
+                                        JOptionPane.ERROR_MESSAGE);
+        }               
+    }
+}
